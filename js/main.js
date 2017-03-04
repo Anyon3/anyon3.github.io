@@ -34,3 +34,10 @@ $('.suricata').on('click', function() {
 	$('<p><a href="suricata.txt">suricata.txt</a></p>').appendTo('#mblock');
 	$('<p>Update rules : oinkmaster.pl -C /etc/oinkmaster.conf -o /etc/suricata/rules/</p>').appendTo('#mblock');
 });
+
+$('.grub').off('click');
+$('.grub').on('click', function() {
+	$('#mblock').empty();
+	$('<h1>grub</h1>').appendTo('#mblock');
+	$('<p>luks entry : <a href="grub.txt">grub.txt</a></p>').appendTo('#mblock');
+});

@@ -1,0 +1,16 @@
+#Waste, waste, waste...
+menuentry 'Gentoo GNU/Linux' --class gentoo --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-/dev/mapper/root' {
+	load_video
+	insmod gzio
+	insmod part_msdos
+	set root='hd1,msdos1'
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root --hint-bios=hd1,msdos1 --hint-efi=hd1,msdos1 --hint-baremetal=ahci1,msdos1  7b6ff65-*******-45b7-a29e--*******-
+	else
+	  search --no-floppy --fs-uuid --set=root 7b6ff65-*******-45b7-a29e--*******-
+	fi
+	echo	'Loading Linux 4.9.12-hardened ...'
+	linux	/vmlinuz-4.9.12-hardened root=UUID=-*******--7173-4fx0f8-bae8--*******- crypt_root=/dev/sdb3 real_root=/dev/mapper/root lvm rootfstype=ext4 ro  
+	echo	'Loading initial ramdisk ...'
+	initrd	/initramfs-genkernel-x86_64-4.9.12-hardened
+}
