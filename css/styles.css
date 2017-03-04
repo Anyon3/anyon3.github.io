@@ -7,11 +7,26 @@ ul {
 list-style-type:none;
 }
 ul li {
+cursor:pointer;
+display:inline-block;
 color:white;
+padding:3px 5px 3px 5px;
+background-color: rgba(0, 0, 0, 0.2);
 }
+
 #mblock {
+color:white;
+margin:100px auto;
 max-width:800px;
-width:100%;
-margin:0 auto;
-opacity:0.6;
+border:1px solid #494949;
+background-color: rgba(0, 0, 0, 0.4);
+}
+
+#mblock > h1 {
+font-size:18px;
+text-align:center;
+}
+
+#mblock > p {
+text-align:center;
 }
