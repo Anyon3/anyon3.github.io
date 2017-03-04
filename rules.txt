@@ -1,0 +1,17 @@
+# Clean iptables rules
+iptables -X
+iptables -Z
+iptables -F
+
+# Redirect DNS port -> dnscrypt 
+iptables -t nat -A OUTPUT -p TCP --dport 53 -j DNAT --to-destination 127.0.0.1:40
+iptables -t nat -A OUTPUT -p UDP --dport 53 -j DNAT --to-destination 127.0.0.1:40
+	
+# For Suricata
+iptables -I INPUT -j NFQUEUE
+iptables -I OUTPUT -j NFQUEUE
+
+# Suricata
+mkdir /var/run/suricata
+suricata -c /etc/suricata/suricata.yaml -q 0
+

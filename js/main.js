@@ -19,3 +19,18 @@ $('.firej').on('click', function() {
 	$('<p>Tor : --env=LD_PRELOAD=/usr/lib64/torsocks/libtorsocks.so</p>').appendTo('#mblock');
 
 });
+
+$('.iptables').off('click');
+$('.iptables').on('click', function() {
+	$('#mblock').empty();
+	$('<h1>Iptables rules</h1>').appendTo('#mblock');
+	$('<p><a href="rules.txt">rules.txt</a></p>').appendTo('#mblock');
+});
+
+$('.suricata').off('click');
+$('.suricata').on('click', function() {
+	$('#mblock').empty();
+	$('<h1>Suricata</h1>').appendTo('#mblock');
+	$('<p><a href="suricata.txt">suricata.txt</a></p>').appendTo('#mblock');
+	$('<p>Update rules : oinkmaster.pl -C /etc/oinkmaster.conf -o /etc/suricata/rules/</p>').appendTo('#mblock');
+});
