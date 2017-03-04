@@ -1,0 +1,17 @@
+body {
+background-image:url('../images/b.jpg');
+background-repeat: no-repeat;
+background-size:cover;
+}
+ul {
+list-style-type:none;
+}
+ul li {
+color:white;
+}
+#mblock {
+max-width:800px;
+width:100%;
+margin:0 auto;
+opacity:0.6;
+}
