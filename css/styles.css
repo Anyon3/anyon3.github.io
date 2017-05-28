@@ -9,12 +9,16 @@ float:left;
 width:10%;
 list-style-type:none;
 }
-ul li {
+#menu li {
 display:block;
 cursor:pointer;
 color:white;
 padding:3px 5px 3px 5px;
 background-color: rgba(0, 0, 0, 0.2);
+}
+#menu li a {
+text-decoration:none;
+color:white;
 }
 #mblock {
 overflow:auto;
