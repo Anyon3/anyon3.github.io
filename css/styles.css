@@ -69,7 +69,14 @@ border-bottom:1px dotted white;
 .list p {
 font-size:15px;
 text-align:justify;
-margin:11px 0 15px 10px;
+margin:5px 0 5px 10px;
+}
+.list .comment {
+display:block;
+font-size:14px;
+font-style:normal;
+color:#cccccc;
+border-bottom:none;
 }
 #mblock a {
 text-decoration:none;
