@@ -31,7 +31,7 @@
 	<p>While it's fine to use it on this way, you may need to write a profile file if no template is available for your application. You may even need to custom a offered template to work in your system or if you like add/remove/edit the security and restriction value.</p>
 	<p>Another way to use Firejail is to add the wanted option directly as argument in the command line.</p>
 	<p>List of some of the Firejail options</p>
-	<div class=codeLong>
+	<div class=list>
 		<span> noroot </span> <p>The root access do not exist in the sandbox, only the current user</p>
 		<span> noprofile </span> <p>Do not use the default profile defined for the processus. This option should be use when the command line is passed with several argument</p>
 		<span> nogroups </span> <p>Do not share any other groups of the user. By default, the processus share all the groups of the user system</p>
@@ -59,7 +59,7 @@
 		<span class=command>$ firejail --help</span>
 	</div>
 	<p>Some examples using the command line argument method</p>
-	<div class=code>
+	<div class=codeLong>
 		 <span class=comment># new-instance parameters ensure Firefox to run as a new instance. It allow to run multiples instance of Firefox instead of opening a new tab or new windows to a Firefox processus already running</span>
 		  <p> $ firejail --noprofile --nogroups --private=~/firejail/ --private-dev --private-tmp --ipc-namespace --machine-id --noroot --caps.drop=all --seccomp --debug --trace --nosound --no3d firefox --new-instance</p>
 	    <span class=comment># no-sandbox parameters is needed to allow Firejail sandboxing for Chromium</span>
