@@ -45,12 +45,21 @@ border:1px solid #525252;
 background-color: rgba(0, 0, 0, 0.6);
 border-radius:3px;
 }
-.code .comment {
+.codeLong {
+text-align:left;
+max-width:96%;
+padding:4px;
+margin:0;
+border:1px solid #525252;
+background-color: rgba(0, 0, 0, 0.6);
+border-radius:3px;
+}
+.code .comment, .codeLong .comment {
 font-size:14px;
 font-style:normal;
 color:#cccccc;
 }
-.code .commmand {
+.code .commmand, .codeLong .commmand {
 margin:0;
 margin:0;
 }
