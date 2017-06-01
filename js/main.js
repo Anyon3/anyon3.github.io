@@ -57,6 +57,6 @@ $('.grsecurity').off('click');
 $('.grsecurity').on('click', function() {
 	$('#mblock').empty();
 	$('<h1>Grsecurity</h1>').appendTo('#mblock');
-	$('<p>26 May 2017 was a disaster for the free and public access to one the best (if it\'s not, the best) security stuff. A paper will be wrote in the next few days...</p>').appendTo('#mblock');
+	$('<p>26 April 2017 was a disaster for the free and public access to one the best (if it\'s not, the best) security features for Linux. It is still available but only for pay members. Grsecurity is definitively the first pickup, no-brainer, must have for the security of the kernel Linux itself and the system base on. While there is a little hope to see a free release of their futur work, the last free patch given to the public can still be used, and will add a strong security layer to the kernel and system Linux for at least the next 10 years.</p>').appendTo('#mblock');
 	$('<p><a href="https://grsecurity.net" title="grsecurity linux">Grsecurity official website</a></p>').appendTo('#mblock');
 });
