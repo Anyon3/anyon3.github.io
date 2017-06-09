@@ -49,7 +49,8 @@ $('.firefox').off('click');
 $('.firefox').on('click', function() {
 	$('#mblock').empty();
 	$('<h1>Firefox</h1>').appendTo('#mblock');
-	$('<p>By default, Firefox is not set with a decent security privacy profile. A good move is to use the following hardened profile that aim privacy/security, especially on the fingerprint</p>').appendTo('#mblock');
+	$('<p>By default, Firefox is not set with a decent security/privacy profile. You cannot seriously rely on the options of Firefox as "Private mode" "Security" and co : Those are a smoke screen and the "real" settings that can aim to offer more Security/Privacy are inside the pref.js<br><br>A good move is to use the following hardened profile that aim to offer what Firefox lack to provide by default, especially on the fingerprint. You may be interested by uMatrix plugins, avoid the use of others plugins if possible. If you want more security/privacy, go for Torbrowser as Firefox is limited for this.<br><br> \
+		If you are wondering if Google chrome is a better alternative, then I stop you here, this browser is a backdoor, period. No need to details more on the motivation of Google.</p>').appendTo('#mblock');
 	$('<p><a href="https://github.com/pyllyukko/user.js" title="Hardened firefox">Firefox hardened user.js</a></p>').appendTo('#mblock')
 });
 
@@ -57,6 +58,6 @@ $('.grsecurity').off('click');
 $('.grsecurity').on('click', function() {
 	$('#mblock').empty();
 	$('<h1>Grsecurity</h1>').appendTo('#mblock');
-	$('<p>26 April 2017 was a disaster for the free and public access to one the best (if it\'s not, the best) security features for Linux. It is still available but only for pay members. Grsecurity is definitively the first pickup, no-brainer, must have for the security of the kernel Linux itself and the system base on. While there is a little hope to see a free release of their futur work, the last free patch given to the public can still be used, and will add a strong security layer to the kernel and system Linux for at least the next 10 years.</p>').appendTo('#mblock');
+	$('<p>26 May 2017 was a disaster for the free and public access to one the best (if it\'s not, the best) security stuff. A paper will be wrote in the next few days...</p>').appendTo('#mblock');
 	$('<p><a href="https://grsecurity.net" title="grsecurity linux">Grsecurity official website</a></p>').appendTo('#mblock');
 });

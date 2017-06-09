@@ -4,80 +4,88 @@
 <!-- Stop wasting your time seriously -->
 <meta charset="UTF-8">
 <title>Firejail - Jail unwanted access</title>
-<meta name="description" content="Security Linux by sandbox with Firejail.">
+<meta name="description" content="Security Linux by application sandboxing with Firejail.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-	<ul id=menu>
-	<li class=termbl>TTB</li>
-	<li><a href="firejail.html" title="Firejail">Firejail</a>
-	<li class=iptables>Iptables</li>
-	<li class=suricata>Suricata</li>
-	<li class=grub>Grub</li>
-	<li class=dnscrypt>DNScrypt</li>
-	<li class=firefox>Firefox</li>
-	<li class=grsecurity>Grsecurity</li>
-	</ul>
-<div id=mblock>
-<h1>The Sandboxing</h1><br>
-<article>
-	<p>Firejail is a security tool for Linux providing a security layer for most of the binary / processus by running them inside a restricted environment or, commonly named sandbox. With numerous of options and possibility of restriction. Firejail is a no-brainer pick for the Linux security.</p>
-		<p>A common usage of Firejail is to use a defined profile, located in /etc/firejail/{application}.profile. The profile file will contain the security options and restriction wanted for the application. Firejail offer numerous of template that will make the application working and more secure out of the box. </p>
-		<div class=codeLong>
-			<span class=comment># Example with the profile method, for Firefox</span><br>
-			<span class=command>$ firejail firefox</span>
-		</div>
-	<p>While it's fine to use it on this way, you may need to write a profile file if no template is available for your application. You may even need to custom a offered template to work in your system or if you like add/remove/edit the security and restriction value.</p>
-	<p>Another way to use Firejail is to add the wanted option directly as argument in the command line.</p>
-	<p>List of some of the Firejail options</p>
-	<div class=list>
-		<span> noroot </span> <p>The root access do not exist in the sandbox, only the current user</p>
-		<span> noprofile </span> <p>Do not use the default profile defined for the processus. This option should be use when the command line is passed with several argument</p>
-		<span> nogroups </span> <p>Do not share any other groups of the user. By default, the processus share all the groups of the user system</p>
-		<span> nonewprivs </span><p> Any child processes of the running binary will not acquire different privilege or higher permission by calling a binary with a different suid.</p>
-		<span> caps.drop=all </span> <p>The capabilities are a kernel feature that divide the root privilege into differents distinct units. By default a root privilege processus can bypass all kernel capabilities while an unprivilege processus trying to access to a capabilities will be subject to a control. This options will drop all capabilities access to the running process.</p>
-		<span> seccomp </span> <p>The sandboxing tool of the Linux kernel that reduice to the numbers of system calls of the running process.</p>
-		<span> nosound </span> <p>Denied the access of the running process to the sound system (alsa, pulseaudio...) .</p>
-		<span> novideo </span> <p>Denied the access of the running process to the video system.</p>
-		<span> no3d </span> <p>Denied the access of the running process to the 3D acceleration of the system.</p>
-		<span> private </span> <p>Mount a temporary new /root and /home/directory for the sandbox, everything is discarded when the sandbox exit.</p>
-		<span> private=~/directory/ </span> <p>Use the target directory as user home, that ensure the process to be isolated from the main home directory of the user </p>
-		<span> private-tmp </span> <p>Create a temporary and uniq /tmp/ for the running process. The /tmp/ is removed when the processus exit</p>
-		<span> private-dev </span> <p>Create a new directory /dev/ directory for the running process. Only dri, null, full, zero, tty, pts, ptmx, random, snd, urandom, video, log and shm devices are available</p>
-		<span> ipc-namespace </span> <p>Enable a new IPC namespace for the processus. Namespace is a feature of isolation and virtualization of the system ressources, it allow to virtualize ressources like the hostname, network access, filesystems... per thread</p>
-		<span> machine-id </span> <p>Generate a random machine ID, usefull against the fingerprinting.</p>
-		<span> net=none </span> <p>No network connection will be available inside the sandbox. This should be used if you are running a processus that have no need to access to the network connection. Like Vlc or LibreOffice</p>
-		<span> dns= </span> <p>Set the dns server to use. You can pass multiples (up to 4) dns= options</p>
-		<span> debug </span> <p>Make the running processus printing debug messages</p>
-		<span> trace </span> <p>Make the running processus printing trace open, access and connect system calls.</p>
-		<span> env= </span> <p>Allow the run a customer environment variable inside the sandbox. --env=LD_PRELOAD=/usr/lib64/torsocks/libtorsocks.so will for example make the network connection trought TOR.</p>
+	<div id=ctnMenu>
+		<ul class=section>
+			<li>Sec</li>
+			<li class="sub iptables">Iptables</li>
+			<li class="sub dnscrypt">DNScrypt</li>
+			<li class="sub firefox" itemprop=name>Firefox</li>
+			<li class="sub suricata" itemprop=name>Suricata</li>
+			<li class=sub itemprop=name><a href="firejail.html" title="Firejail" itemprop="url">Firejail</a>
+			<li class="sub grsecurity" itemprop=name>Grsecurity</li>
+		</ul>
+			<ul class=section>
+			<li>Misc</li>
+			<li class="sub termbl" itemprop=name>TTB</li>
+			<li class="sub grub" itemprop=name>Grub</li>
+			<li class="sub grub" itemprop=name><a href="jquery-clic-firing.html" title="Jquery - Multiples firing click" itemprop="url">jQu - Clic firing</a></li>
+		</ul>
 	</div>
-	<p>The full option list of Firejail is available in man page or with the --help parameters. You should consider to read the documentation of Firejail on the man page as often an update is release to stay up to date on the new features.</p>
-	<div class=code>
-		<span class=comment># Command line in a linux terminal</span><br>
-		<span class=command>$ firejail --help</span>
-	</div>
-	<p>Some examples using the command line argument method</p>
-	<div class=codeLong>
-		 <span class=comment># new-instance parameters ensure Firefox to run as a new instance. It allow to run multiples instance of Firefox instead of opening a new tab or new windows to a Firefox processus already running</span>
-		  <p> $ firejail --noprofile --nogroups --private=~/firejail/ --private-dev --private-tmp --ipc-namespace --machine-id --noroot --caps.drop=all --seccomp --debug --trace --nosound --no3d firefox --new-instance</p>
-	    <span class=comment># no-sandbox parameters is needed to allow Firejail sandboxing for Chromium</span>
-	      <p> $ firejail --noprofile --nogroups --private=~/chromejail/ --private-dev --private-tmp --ipc-namespace --machine-id --noroot --caps.drop=all --seccomp --nosound --no3d  chromium -no-sandbox</p>
-		<span class=comment># VLC </span>
-		  <p> $ firejail --noprofile --nogroups --net=none --private-tmp --seccomp --caps.drop=all vlc</p>
-		<span class=comment># Irssi trough TOR.</span>
-		  <p> $ firejail --noprofile --nogroups --private=~/irssijail/ --private-dev --private-tmp --ipc-namespace --machine-id --noroot --caps.drop=all --seccomp --nosound --novideo --env=LD_PRELOAD=/usr/lib64/torsocks/libtorsocks.so irssi</p>
-		<span class=comment># Gimp</span>
-		  <p> $ firejail --noprofile --nogroups --noroot --net=none --caps.drop=all --seccomp --nosound gimp</p>
-		<span class=comment># Shell sandboxing</span>
-		  <p> $ firejail --noprofile --nogroups --private --private-dev --private-tmp --ipc-namespace --machine-id --noroot --caps.drop=all --seccomp --nosound --novideo --env=LD_PRELOAD=/usr/lib64/torsocks/libtorsocks.so</p>
-		<span class=comment># Zend IDE 13 <i>(Jave closed source code)</i></span>
-		  <p> $ firejail --noprofile --net=none --private=~/zendjail/ --machine-id --noroot --caps.drop=all --seccomp --nosound ~/ZendStudio/./ZendStudio</p>
-	</div>
-	 <p>Keep in mind that some application may crash a lot or not even because of some restriction of your sandbox. A simple solution is to remove one by one, the passed Firejail argument, until success. <i>(Using trace / debug / audit will help you to understand what's wrong)</i>... The more you restrict, the more your system is protected. If one of your application offer a sandbox security but can't work inside a Firejail sandbox, you can disable the use of your application sandbox and use Firejail instead <i>(Like Chromium)</i></p>
-     <p><a href="https://firejail.wordpress.com" title="Firejail">Official website of Firejail</a></p>
-</div>
+	<section id=mblock>
+		<h1>The Sandboxing</h1><br>
+		<article>
+			<p>Firejail is a security tool for Linux providing a security layer for most of the binary / processus by running them inside a restricted environment or, commonly named sandbox. With numerous of options and possibility of restriction. Firejail is a no-brainer pick for the Linux security.</p>
+			<p>A common usage of Firejail is to use a defined profile, located in /etc/firejail/{application}.profile. The profile file will contain the security options and restriction wanted for the application. Firejail offer numerous of template that will make the application working and more secure out of the box. </p>
+			<div class=codeLong>
+				<span class=comment># Example with the profile method, for Firefox</span><br>
+				<span class=command>$ firejail firefox</span>
+			</div>
+			<p>While it's fine to use it on this way, you may need to write a profile file if no template is available for your application. You may even need to custom a offered template to work in your system or if you like add/remove/edit the security and restriction value.</p>
+			<p>Another way to use Firejail is to add the wanted option directly as argument in the command line.</p>
+			<p>List of some of the Firejail options</p>
+			<div class=list>
+				<span> noroot </span> <p>The root access do not exist in the sandbox, only the current user</p>
+				<span> noprofile </span> <p>Do not use the default profile defined for the processus. This option should be use when the command line is passed with several argument</p>
+				<span> nogroups </span> <p>Do not share any other groups of the user. By default, the processus share all the groups of the user system</p>
+				<span> nonewprivs </span><p> Any child processes of the running binary will not acquire different privilege or higher permission by calling a binary with a different suid.</p>
+				<span> caps.drop=all </span> <p>The capabilities are a kernel feature that divide the root privilege into differents distinct units. By default a root privilege processus can bypass all kernel capabilities while an unprivilege processus trying to access to a capabilities will be subject to a control. This options will drop all capabilities access to the running process.</p>
+				<span> seccomp </span> <p>The sandboxing tool of the Linux kernel that reduice to the numbers of system calls of the running process.</p>
+				<span> nosound </span> <p>Denied the access of the running process to the sound system (alsa, pulseaudio...) .</p>
+				<span> novideo </span> <p>Denied the access of the running process to the video system.</p>
+				<span> no3d </span> <p>Denied the access of the running process to the 3D acceleration of the system.</p>
+				<span> private </span> <p>Mount a temporary new /root and /home/directory for the sandbox, everything is discarded when the sandbox exit.</p>
+				<span> private=~/directory/ </span> <p>Use the target directory as user home, that ensure the process to be isolated from the main home directory of the user </p>
+				<span> private-tmp </span> <p>Create a temporary and uniq /tmp/ for the running process. The /tmp/ is removed when the processus exit</p>
+				<span> private-dev </span> <p>Create a new directory /dev/ directory for the running process. Only dri, null, full, zero, tty, pts, ptmx, random, snd, urandom, video, log and shm devices are available</p>
+				<span> ipc-namespace </span> <p>Enable a new IPC namespace for the processus. Namespace is a feature of isolation and virtualization of the system ressources, it allow to virtualize ressources like the hostname, network access, filesystems... per thread</p>
+				<span> machine-id </span> <p>Generate a random machine ID, usefull against the fingerprinting.</p>
+				<span> net=none </span> <p>No network connection will be available inside the sandbox. This should be used if you are running a processus that have no need to access to the network connection. Like Vlc or LibreOffice</p>
+				<span> dns= </span> <p>Set the dns server to use. You can pass multiples (up to 4) dns= options</p>
+				<span> debug </span> <p>Make the running processus printing debug messages</p>
+				<span> trace </span> <p>Make the running processus printing trace open, access and connect system calls.</p>
+				<span> env= </span> <p>Allow the run a customer environment variable inside the sandbox. --env=LD_PRELOAD=/usr/lib64/torsocks/libtorsocks.so will for example make the network connection trought TOR.</p>
+			</div>
+			<p>The full option list of Firejail is available in man page or with the --help parameters. You should consider to read the documentation of Firejail on the man page as often an update is release to stay up to date on the new features.</p>
+			<div class=code>
+				<span class=comment># Command line in a linux terminal</span><br>
+				<span class=command>$ firejail --help</span>
+			</div>
+			<p>Some examples using the command line argument method</p>
+			<div class=codeLong>
+				 <span class=comment># new-instance parameters ensure Firefox to run as a new instance. It allow to run multiples instance of Firefox instead of opening a new tab or new windows to a Firefox processus already running</span>
+				  <p> $ firejail --noprofile --nogroups --private=~/firejail/ --private-dev --private-tmp --ipc-namespace --machine-id --noroot --caps.drop=all --seccomp --debug --trace --nosound --no3d firefox --new-instance</p>
+			    <span class=comment># no-sandbox parameters is needed to allow Firejail sandboxing for Chromium</span>
+			      <p> $ firejail --noprofile --nogroups --private=~/chromejail/ --private-dev --private-tmp --ipc-namespace --machine-id --noroot --caps.drop=all --seccomp --nosound --no3d  chromium -no-sandbox</p>
+				<span class=comment># VLC </span>
+				  <p> $ firejail --noprofile --nogroups --net=none --private-tmp --seccomp --caps.drop=all vlc</p>
+				<span class=comment># Irssi trough TOR.</span>
+				  <p> $ firejail --noprofile --nogroups --private=~/irssijail/ --private-dev --private-tmp --ipc-namespace --machine-id --noroot --caps.drop=all --seccomp --nosound --novideo --env=LD_PRELOAD=/usr/lib64/torsocks/libtorsocks.so irssi</p>
+				<span class=comment># Gimp</span>
+				  <p> $ firejail --noprofile --nogroups --noroot --net=none --caps.drop=all --seccomp --nosound gimp</p>
+				<span class=comment># Shell sandboxing</span>
+				  <p> $ firejail --noprofile --nogroups --private --private-dev --private-tmp --ipc-namespace --machine-id --noroot --caps.drop=all --seccomp --nosound --novideo --env=LD_PRELOAD=/usr/lib64/torsocks/libtorsocks.so</p>
+				<span class=comment># Zend IDE 13 <i>(Jave closed source code)</i></span>
+				  <p> $ firejail --noprofile --net=none --private=~/zendjail/ --machine-id --noroot --caps.drop=all --seccomp --nosound ~/ZendStudio/./ZendStudio</p>
+			</div>
+			 <p>Keep in mind that some application may crash a lot or not even run because of some restriction of your sandbox. A simple solution is to remove one by one, the passed Firejail argument, until success. <i>(Using trace / debug / audit will help you to understand what's wrong)</i>... The more you restrict, the more your system is protected. If one of your application offer a sandbox security but can't work inside a Firejail sandbox, you can disable the use of your application sandbox and use Firejail instead <i>(Like Chromium)</i></p>
+		     <p><a href="https://firejail.wordpress.com" title="Firejail">Official website of Firejail</a></p>
+	     </article>
+	</section>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 </body>

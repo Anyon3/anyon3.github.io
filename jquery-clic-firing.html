@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Stop wasting your time seriously -->
+<meta charset="UTF-8">
+<title>jQuery - click multiples times firing</title>
+<meta name="description" content="Fix the multiples firing click that jumble a even animation">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+	<div id=ctnMenu>
+		<ul class=section>
+			<li>Sec</li>
+			<li class="sub iptables">Iptables</li>
+			<li class="sub dnscrypt">DNScrypt</li>
+			<li class="sub firefox" itemprop=name>Firefox</li>
+			<li class="sub suricata" itemprop=name>Suricata</li>
+			<li class=sub itemprop=name><a href="firejail.html" title="Firejail" itemprop="url">Firejail</a>
+			<li class="sub grsecurity" itemprop=name>Grsecurity</li>
+		</ul>
+			<ul class=section>
+			<li>Misc</li>
+			<li class="sub termbl" itemprop=name>TTB</li>
+			<li class="sub grub" itemprop=name>Grub</li>
+		</ul>
+	</div>
+	<section id=mblock>
+		<h1>The multiples firing click of Jquery</h1><br>
+		<article>
+		<p>For thoses who have previously written several scripts with jQuery, one day or another, the problem of a multiples firing event on a click / hover / scroll or other trigger function has happen. Until today, I could not find a decent solution on a search engine nor in the bible of the jQuery problem/solution, stackoverflow</p>
+	  	<p>Let's take somes of the solutions proposed</p>
+	  	<div class=list>
+			<span>stopPropagation()</span><p> </p>
+			<span>stopImmediatePropagation()</span><p> </p>
+			<span>unbind()</span><p> </p>
+			<span>one()</span><p> </p>
+			<span>off()</span><p> </p>
+			<span>... multiple other solutions...</span><p> </p>
+		</div>
+		<p>If somes of thoses seems work at the first shot, it may later one, show somes weakness as time to time, run multiples time a event or do work with some browser but not with other one or not working with some part of your script, but no problem with other part etc etc...</p>
+		<p>Let's take a simple example, as a website menu with submenu that show when a click event is firing multiples times. For make the problem happen, click multiples times, as faster as you can for few seconds on "Download" and see : </p>
+		<p><a href="https://jsfiddle.net/tuf3mwr6/6/" target=_blank>Jsfiddle multiples firing problem</a></p>
+		<p>The submenu after the last click, will continue to slideDown and slideUp as long all the click has not finish to execute the event jQuery. In many case as for hover / scroll / click event, one click could be firing multiples times, disturbing the use of your web application</p>
+		<p>If all the solutions you previously tried aren't exacly working without problem or doesn't fit for you requirement, here a simple and efficient solution that will prevent the event to firing again or to be add in queue as long a event is running and not yet finish. On this jsfiddle, try as previously, click multiples times for few seconds as fast as possible</p>
+		<p><a href="https://jsfiddle.net/tuf3mwr6/5/" target=_blank>Jsfiddle multiples firing solution</a></p>
+		<p>The submenu will stop after your last click, no matter of many time you have firing the event. As you can see, we add a boolean variable set to false, when a click is firing the event, we first check the the boolean, if it's false, then, right after we set the the variable to true and allow the event to continue his instruction, at the last part of the event, we add promise().done that will set the boolean to false when only the end of the last instruction have terminated. If the event click is running and another click firing is made, as the check of the boolean at the beginning of the function will be true, it will stop at this point.</p>
+	    </article>
+	</section>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

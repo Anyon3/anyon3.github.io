@@ -1,17 +1,29 @@
-# Clean iptables rules
+#Delete previous iptables rules
+
 iptables -X
 iptables -Z
 iptables -F
 
-# Redirect DNS port -> dnscrypt 
+#Redirect DNS port to 40 (dnscrypt)
 iptables -t nat -A OUTPUT -p TCP --dport 53 -j DNAT --to-destination 127.0.0.1:40
 iptables -t nat -A OUTPUT -p UDP --dport 53 -j DNAT --to-destination 127.0.0.1:40
-	
-# For Suricata
+
+#Allow the port 80 for local connection only
+iptables -A INPUT -p tcp -s localhost --dport 80 -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -j DROP
+
+iptables -A INPUT -p icmp --icmp-type timestamp-request -j DROP
+iptables -A OUTPUT -p icmp --icmp-type timestamp-reply -j DROP
+
+#Suricata
 iptables -I INPUT -j NFQUEUE
 iptables -I OUTPUT -j NFQUEUE
 
-# Suricata
-mkdir /var/run/suricata
-suricata -c /etc/suricata/suricata.yaml -q 0
+#Faking the mac
+ifconfig eth0 hw ether 00:11:22:33:44:55
 
+#DHCP
+dhcpcd eth0
+
+#Run the daemon of suricata
+suricata -c /etc/suricata/suricata.yaml -q 0

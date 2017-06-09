@@ -4,19 +4,35 @@ background-repeat: no-repeat;
  height: 100%;
 background-size: cover;
 }
-#menu {
+#ctnMenu {
 float:left;
-width:10%;
-list-style-type:none;
-}
-#menu li {
+width:160px;
 display:block;
-cursor:pointer;
 color:white;
-padding:3px 5px 3px 5px;
+text-align:left;
+}
+.section {
+margin:0;
+padding:0;
+list-style-type:square;
+text-align:left;
+}
+.section li:first-child {
+margin:0;
+padding:0;
+font-size:20px;
+background-color: rgba(0, 0, 0, 0.9);
+}
+.section li {
+padding:5px 0 5px 15px;
+text-indent:3px;
+cursor:pointer;
+background-color: rgba(0, 0, 0, 0.6);
+}
+.section li:hover {
 background-color: rgba(0, 0, 0, 0.2);
 }
-#menu li a {
+.sub a {
 text-decoration:none;
 color:white;
 }
