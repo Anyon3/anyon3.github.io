@@ -12,7 +12,7 @@
 vars:
   # more specifc is better for alert accuracy and performance
   address-groups:
-    HOME_NET: "[192.168.8.0/24]"
+    HOME_NET: "[192.168.8.100/29]"
     #HOME_NET: "[192.168.0.0/16]"
     #HOME_NET: "[10.0.0.0/8]"
     #HOME_NET: "[172.16.0.0/12]"
@@ -62,10 +62,10 @@ rule-files:
  - emerging-dns.rules
  - emerging-dos.rules
  - emerging-exploit.rules
-# - emerging-ftp.rules
+ - emerging-ftp.rules
 # - emerging-games.rules
-# - emerging-icmp_info.rules
-# - emerging-icmp.rules
+ - emerging-icmp_info.rules
+ - emerging-icmp.rules
 # - emerging-imap.rules
 # - emerging-inappropriate.rules
 # - emerging-info.rules
@@ -79,7 +79,7 @@ rule-files:
  - emerging-rpc.rules
 # - emerging-scada.rules
 # - emerging-scada_special.rules
- - emerging-scan.rules
+# - emerging-scan.rules
  - emerging-shellcode.rules
 # - emerging-smtp.rules
  - emerging-snmp.rules
@@ -300,7 +300,7 @@ outputs:
 
   # a line based log of DNS requests and/or replies (no alerts)
   - dns-log:
-      enabled: no
+      enabled: yes
       filename: dns.log
       append: yes
       #filetype: regular # 'regular', 'unix_stream' or 'unix_dgram'
@@ -679,7 +679,7 @@ app-layer:
         # (may be resource intensive)
         # This field supercedes all others because it turns the entire
         # process on or off
-        decode-mime: yes
+        decode-mime: no
 
         # Decode MIME entity bodies (ie. base64, quoted-printable, etc.)
         decode-base64: yes
@@ -700,9 +700,9 @@ app-layer:
         content-inspect-min-size: 32768
         content-inspect-window: 4096
     imap:
-      enabled: detection-only
+      enabled: no
     msn:
-      enabled: detection-only
+      enabled: no
     smb:
       enabled: yes
       detection-ports:
@@ -917,8 +917,8 @@ coredump:
 # This feature is currently only used by the reject* keywords.
 host-mode: auto
 
-# Number of packets preallocated per thread. The default is 1024. A higher number
-# will make sure each CPU will be more easily kept busy, but may negatively
+# Number of packets preallocated per thread. The default is 1024. A higher number 
+# will make sure each CPU will be more easily kept busy, but may negatively 
 # impact caching.
 #
 # If you are using the CUDA pattern matcher (mpm-algo: ac-cuda), different rules
@@ -960,7 +960,7 @@ unix-command:
 
 # Magic file. The extension .mgc is added to the value here.
 #magic-file: /usr/share/file/magic
-#magic-file:
+#magic-file: 
 
 legacy:
   uricontent: enabled
@@ -1012,7 +1012,7 @@ host-os-policy:
   bsd: []
   bsd-right: []
   old-linux: []
-  linux: [192.168.8.0/24]
+  linux: [192.168.8.100/29]
   old-solaris: []
   solaris: []
   hpux10: []

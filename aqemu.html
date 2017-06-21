@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Stop wasting your time seriously -->
+<meta charset="UTF-8">
+<title>Aqemu - Gui management of qemu/kvm</title>
+<meta name="description" content="Security Linux by application sandboxing with Firejail.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+	<div id=ctnMenu>
+		<ul class=section>
+			<li>Sec</li>
+			<li class="sub iptables">Iptables</li>
+			<li class="sub dnscrypt">DNScrypt</li>
+			<li class="sub firefox" itemprop=name>Firefox</li>
+			<li class="sub startx" itemprop=name>Startx</li>
+			<li class="sub suricata" itemprop=name>Suricata</li>
+			<li class=sub itemprop=name><a href="firejail.html" title="Firejail" itemprop="url">Firejail</a>
+			<li class="sub grsecurity" itemprop=name>Grsecurity</li>
+		</ul>
+			<ul class=section>
+			<li>Misc</li>
+			<li class="sub termbl" itemprop=name>TTB</li>
+			<li class="sub grub" itemprop=name>Grub</li>
+			<li class=sub itemprop=name><a href="aqemu.html" title="Aqemu" itemprop="url">Aqemu</a></li>
+			<li class=sub itemprop=name><a href="jquery-clic-firing.html" title="Jquery - Multiples firing click" itemprop="url">jQu - Clic firing</a></li>
+		</ul>
+	</div>
+	<section id=mblock>
+		<h1>Aqemu</h1><br>
+			<article>
+				<div>
+					<h2>Introduction</h2>
+					<p>Aqemu is a free and opensource friendly GUI management for Qemu with the support of KVM, base on QT5 for the graphical interface, written in C++ and multiplateform (Working on Linux, Windows, FreeBSD...). Aqemu provide most of the options of qemu and will make much easier the management of qemu, without compromising the stability and security of your virtual system nor being heavy for the ressources of your machine (memory ram / processor com) .</p>
+					<p>You can fetch easily aqemu on most of the Linux distribution, which should have aqemu in their package manager or you can grab the latest source available on <a href="https://github.com/tobimensch/aqemu" title="Github aqemu">Github</a>, at this time, 0.9.2</p>
+				</div>
+				<div>
+					<h2>Basic creation of a virtual system</h2>
+					<p>This following tutorial aim to help the new user of aqemu to create a virtual system, it should work for of the people whishing to run on their personal computer, a virtual system based on qemu/kvm.</p>
+					<p>Start aqemu by running the command system aqemu in a terminal or eventually, by clicking on his icon in your Window Manager, the first run of aqemu will display the following window</p>
+					<p><img src="images/aqemu/1.png" alt="First launch"></p>
+					<p>Confirm the creation of the new folder by clicking on "Yes". You will now see the main display, which will be the default display everytime you run aqemu.</p>
+					<p><img src="images/aqemu/2.png" alt="main"></p>
+					<p>Before to details more on the options, section and settings available, we will run the First start wizard to provide the basic settings. This is available in the menu : File > First start wizard. The default path will be set to your /home/username/.aqemu in most of the case you don't need to change it</p>
+					<p><img src="images/aqemu/3.png" alt="main"></p>
+					<p>You will need to provide to aqemu, the binary path of qemu, using the automatic search function will work out of the box in most case. If the qemu binary isn't the one required for your machine (arch), you can later one change it in the settings menu.</p>
+					<p><img src="images/aqemu/4.png" alt="main"></p>
+					<p>That's all you need to do, click on next to finish the first start wizard. We will now create our first virtual system, to start the process, click on the icon <img src="images/aqemu/createvm.png" alt="Create new VM" class=inimg></p>		
+					<p><img src="images/aqemu/5.png" alt="main"></p>
+					<p>Select Typical option is the default choice and will work in most of the case</p>
+					<p><img src="images/aqemu/6.png" alt="main"></p>
+					<p>You will need to select the right template according to the operating system that will be installed in this virtual system, for a recent Linux distribution, Linux 2.6 x86_64 is the one you want to select. You can of course install other OS as Windows, Mac'OS system, FreeBSD, just look at the drop list for the right template.</p>
+					<p><img src="images/aqemu/7.png" alt="main"></p>
+					<p>You have to select the accelerator extensions of qemu, the recommanded and no-brainer choice is KVM</p>
+					<p><img src="images/aqemu/8.png" alt="main"></p>
+					<p>Name as you wish your virtual system, however, using the name of the operating system or Linux distribution will display the logo related to it and offer some default settings.</p>
+					<p><img src="images/aqemu/9.png" alt="main"></p>
+					<p>Define the virtual hard drive space you want to allocate for this virtual machine, make sure to have enough free space in your physical hard drive</p>
+					<p><img src="images/aqemu/10.png" alt="main"></p>
+					<p>The settings of the network connection is only limited to the "slirp" or User mode in the creation process, multiples other possibility of configuration as TAP, bridged connection, socket... can be defined later one.</p>
+					<p><img src="images/aqemu/11.png" alt="main"></p>
+					<p>The virtual machine is now created, click to finish to go back in the main display.</p>
+					<p><img src="images/aqemu/12.png" alt="main"></p>
+					<p>A new entry should now be displayed with the name of your virtual machine newly created, the first tab info will display the general settings of the virtual machine.</p>
+					<p><img src="images/aqemu/13.png" alt="main"></p>
+					<p>The tab VM contain several options related to the hardware, you can increase the number of CPU's, ram to use in your virtual machine or choice the boot priority, the keyboard maps...</p
+					<p><img src="images/aqemu/14.png" alt="main"></p>
+					<p>The tab media is for the devices, images and other settings related to the boot of the VM. In order to boot in a ISO image, click on the disk icon in "Add devices"</p>
+					<p><img src="images/aqemu/15.png" alt="main"></p>
+					<p>The tab network will offer several options on how to configure the network connection of the virtual system.</p>
+					<p><img src="images/aqemu/17.png" alt="main"></p>
+					<p>Now we have set the basics options for our virtual system, to start the virtual system, click to <img src="images/aqemu/startvm.png" alt="Create new VM" class=inimg></p>
+					<p>We are now done with the basic configuration of a new virtual system and you should have a display similar to the following</p>
+					<p><img src="images/aqemu/18.png" alt="main"></p>
+				</div>
+				<div>
+				<h2>
+				</div>
+	    </article>
+	</section>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

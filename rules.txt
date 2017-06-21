@@ -1,5 +1,4 @@
 #Delete previous iptables rules
-
 iptables -X
 iptables -Z
 iptables -F
@@ -8,18 +7,18 @@ iptables -F
 iptables -t nat -A OUTPUT -p TCP --dport 53 -j DNAT --to-destination 127.0.0.1:40
 iptables -t nat -A OUTPUT -p UDP --dport 53 -j DNAT --to-destination 127.0.0.1:40
 
-#Allow the port 80 for local connection only
+#Allow the port 80 for local connection only 
 iptables -A INPUT -p tcp -s localhost --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp --dport 80 -j DROP
 
 iptables -A INPUT -p icmp --icmp-type timestamp-request -j DROP
 iptables -A OUTPUT -p icmp --icmp-type timestamp-reply -j DROP
 
-#Suricata
+#Suricata 	
 iptables -I INPUT -j NFQUEUE
 iptables -I OUTPUT -j NFQUEUE
 
-#Faking the mac
+#Faking the mac - Physical ethernet
 ifconfig eth0 hw ether 00:11:22:33:44:55
 
 #DHCP
