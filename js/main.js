@@ -68,6 +68,6 @@ $('.startx').on('click', function() {
 	$('<h1>Startx secure</h1>').appendTo('#mblock');
 	$('<p>If you are starting your WM by entering the command startx instead of using a display manager, and lock the screen using a X display locker, this can be bypass by someone having a physical access to your computer. For example, switching to a tty with ctrl + alt + f1 (or f2, f3... the TTY used to run startx) will give a user access and make your screen locker useless. A simple way to secureS this is to start your WM like this : </p> \
 	   <p>startx; exit</p> \
-	   <p>What will happen is simple, if the intruder kill X on the TTY by entering ctrl + c, the command exit will be executed and the prompt of the Login will be display. This tricks was found on a mailing list of Debian.').appendTo('#mblock');
-	$('<p><a href="https://grsecurity.net" title="grsecurity linux">Grsecurity official website</a></p>').appendTo('#mblock');
+	   <p>What will happen is simple, if the intruder kill X on the TTY by entering ctrl + c, the command exit will be executed and the prompt of the Login will be display.').appendTo('#mblock');
+	$('<p>This tricks was found on a mailing list of Debian.</p>').appendTo('#mblock');
 });
